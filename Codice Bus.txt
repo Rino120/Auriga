@@ -1,0 +1,353 @@
+/*
+ * Bus Transport.c
+ *
+ *  Created on: 1 lug 2021
+ *      Author: Ruggiero Palmitessa
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+void menu(void);
+
+void Prenotazioni_Posti(void);
+void Prenotazioni_Disabili(void);
+
+void Percorso_Milano(void);
+void Percorso_Roma(void);
+void Percorso_Bari(void);
+
+void Perc_Milano(void);
+void Perc_Roma(void);
+void Perc_Bari(void);
+
+void Prenota_Milano(void);
+void Prenota_Roma(void);
+void Prenota_Bari(void);
+
+void Pren_Milano(void);
+void Pren_Roma(void);
+void Pren_Bari(void);
+
+
+int main(void){
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	menu();
+
+	system("pause");
+	return 0;
+}
+
+
+void menu(void){
+	int opzione;
+	do{
+		puts("\n ******* Salve, benvenuto nell'app per prenotare posti Bus ******* \n");
+
+		puts("\n ************************MENU PRENOTAZIONI************************ \n");
+		puts("\t 1 - Prenotazioni Posti ");
+		puts("\t 2 - Prenotazioni Posti Disabili");
+		puts("\t 3 - Spegnimento");
+
+		printf("\n Cosa vuoi fare?");
+		scanf("%d", &opzione);
+
+		switch(opzione) {
+		case 1:
+			Prenotazioni_Posti();
+			break;
+
+		case 2:
+			Prenotazioni_Disabili();
+			break;
+
+		case 3:
+			puts("\t Spegnimento...");
+			break;
+
+		default:
+			puts("\t Comando non valido!\n");
+		}
+	} while(opzione != 3);
+}
+
+void Prenotazioni_Posti(void){
+	srand(time(0));
+	char citta;
+	int a,b;
+
+	puts("\n ************************PRENOTAZIONI************************ \n");
+	printf("\n In quale città vuole prendere il Bus? (Inserire 1=Milano, 2=Roma, 3=Bari)");
+	scanf("%s",&citta);
+
+	switch(citta) {
+	case '1':
+		a=1+rand()%100;
+		b=1+rand()%70;
+		printf("\n Il Bus n. %d e' disponibile ",a);
+		printf("\n Ci sono ancora %d posti liberi sul bus \n",b);
+		Percorso_Milano();
+		break;
+
+	case '2':
+		a=1+rand()%100;
+		b=1+rand()%70;
+		printf("\n Il Bus n. %d e' disponibile ",a);
+		printf("\n Ci sono ancora %d posti liberi sul bus \n",b);
+		Percorso_Roma();
+		break;
+
+	case '3':
+		a=1+rand()%100;
+		b=1+rand()%70;
+		printf("\n Il Bus n. %d e' disponibile ",a);
+		printf("\n Ci sono ancora %d posti liberi sul bus \n",b);
+		Percorso_Bari();
+		break;
+
+	default:
+		puts("\t Comando non valido!\n");
+	}
+
+}
+
+void Percorso_Milano(void){
+	puts("\n ***** Questo è il percorso del Bus ***** \n");
+
+	puts("\t Prima   Fermata  -  Foro BuonaParte, Via Ricasoli ");
+	puts("\t Seconda Fermata  -  P.za Virgilio");
+	puts("\t Terza   Fermata  -  Via venti settembre");
+	puts("\t Quarta  Fermata  -  C.so Sempione, Via Arona");
+	puts("\t Quinta  Fermata  -  Via Mambretti \n");
+
+	Prenota_Milano();
+}
+
+void Prenota_Milano(void){
+	int opzione,risposta;
+
+	printf("Il Bus percorre una via che ti porta a destinazione? (Inserire 1=SI, 0=NO)");
+	scanf("%d",&opzione);
+
+	if(opzione==1){
+
+		printf("Vorresti prenotare un posto per questo bus? (1=SI, 0=NO)");
+		scanf("%d",&risposta);
+
+		if(risposta==1){
+			puts("Grazie per aver prenotato con noi, si rechi alla fermata più vicino a lei");
+		}
+		else {
+			puts("La ringraziamo per aver utilizzato quest'app, alla prossima!!");
+		}
+
+	}
+}
+
+void Percorso_Roma(void){
+	puts("\n ***** Questo è il percorso del Bus ***** \n");
+
+	puts("\t Prima   Fermata  -  Stazione Vecchia ");
+	puts("\t Seconda Fermata  -  C.so Duca Di Genova/Sirene");
+	puts("\t Terza   Fermata  -  Vincon");
+	puts("\t Quarta  Fermata  -  Gasparri L.");
+	puts("\t Quinta  Fermata  -  Picchio");
+
+	Prenota_Roma();
+}
+
+void Prenota_Roma(void){
+	int opzione,risposta;
+
+	printf("Il Bus percorre una via che ti porta a destinazione? (Inserire 1=SI, 0=NO)");
+	scanf("%d",&opzione);
+
+	if(opzione==1){
+
+		printf("Vorresti prenotare un posto per questo bus? (1=SI, 0=NO)");
+		scanf("%d",&risposta);
+
+		if(risposta==1){
+			puts("Grazie per aver prenotato con noi, si rechi alla fermata più vicino a lei");
+		}
+	}
+	else {
+		puts("La ringraziamo per aver utilizzato quest'app, alla prossima!!");
+	}
+
+}
+
+void Percorso_Bari(void){
+	puts("\n ***** Questo è il percorso del Bus ***** \n");
+
+	puts("\t Prima   Fermata  -  Ateneo ");
+	puts("\t Seconda Fermata  -  Via Andrea Da Bari");
+	puts("\t Terza   Fermata  -  Via Niccolò Piccinni");
+	puts("\t Quarta  Fermata  -  Via Francesco Crispi");
+	puts("\t Quinta  Fermata  -  Corso Mazzini");
+
+	Prenota_Bari();
+}
+
+void Prenota_Bari(void){
+	int opzione,risposta;
+
+	printf("Il Bus percorre una via che ti porta a destinazione? (Inserire 1=SI, 0=NO)");
+	scanf("%d",&opzione);
+
+	if(opzione==1){
+
+		printf("Vorresti prenotare un posto per questo bus? (1=SI, 0=NO)");
+		scanf("%d",&risposta);
+
+		if(risposta==1){
+			puts("Grazie per aver prenotato con noi, si rechi alla fermata più vicino a lei");
+		}
+	}
+	else {
+		puts("La ringraziamo per aver utilizzato quest'app, alla prossima!!");
+	}
+
+}
+
+void Prenotazioni_Disabili(void){
+	srand(time(0));
+	char citta;
+	int a,b;
+
+	puts("************************PRENOTAZIONI************************");
+	printf("\n In quale città vuole prendere il Bus? (Inserire 1=Milano, 2=Roma, 3=Bari)");
+	scanf("%s",&citta);
+
+	switch(citta) {
+	case '1':
+		a=1+rand()%100;
+		b=1+rand()%10;
+		printf("\n Il Bus n. %d e' disponibile ",a);
+		printf("\n Ci sono ancora %d posti liberi sul bus \n",b);
+		Perc_Milano();
+		break;
+
+	case '2':
+		a=1+rand()%100;
+		b=1+rand()%10;
+		printf("\n Il Bus n. %d e' disponibile ",a);
+		printf("\n Ci sono ancora %d posti liberi sul bus \n",b);
+		Perc_Roma();
+		break;
+
+	case '3':
+		a=1+rand()%100;
+		b=1+rand()%10;
+		printf("\n Il Bus n. %d e' disponibile ",a);
+		printf("\n Ci sono ancora %d posti liberi sul bus \n",b);
+		Perc_Bari();
+		break;
+
+	default:
+		puts("\t Comando non valido!\n");
+	}
+
+}
+
+void Perc_Milano(void){
+	puts("\n ***** Questo è il percorso del Bus ***** \n");
+
+	puts("\t Prima   Fermata  -  Foro BuonaParte, Via Ricasoli ");
+	puts("\t Seconda Fermata  -  P.za Virgilio");
+	puts("\t Terza   Fermata  -  Via venti settembre");
+	puts("\t Quarta  Fermata  -  C.so Sempione, Via Arona");
+	puts("\t Quinta  Fermata  -  Via Mambretti");
+
+	Pren_Milano();
+}
+
+void Pren_Milano(void){
+	int opzione,risposta;
+
+	printf("Il Bus percorre una via che ti porta a destinazione? (Inserire 1=SI, 0=NO)");
+	scanf("%d",&opzione);
+
+	if(opzione==1){
+
+		printf("Vorresti prenotare un posto per questo bus? (1=SI, 0=NO)");
+		scanf("%d",&risposta);
+
+		if(risposta==1){
+			puts("Grazie per aver prenotato con noi, si rechi alla fermata più vicino a lei");
+		}
+	}
+	else {
+		puts("La ringraziamo per aver utilizzato quest'app, alla prossima!!");
+	}
+
+}
+
+void Perc_Roma(void){
+	puts("\n ***** Questo è il percorso del Bus ***** \n");
+
+	puts("\t Prima   Fermata  -  Stazione Vecchia ");
+	puts("\t Seconda Fermata  -  C.so Duca Di Genova/Sirene");
+	puts("\t Terza   Fermata  -  Vincon");
+	puts("\t Quarta  Fermata  -  Gasparri L.");
+	puts("\t Quinta  Fermata  -  Picchio");
+
+	Pren_Roma();
+}
+
+void Pren_Roma(void){
+	int opzione,risposta;
+
+	printf("Il Bus percorre una via che ti porta a destinazione? (Inserire 1=SI, 0=NO)");
+	scanf("%d",&opzione);
+
+	if(opzione==1){
+
+		printf("Vorresti prenotare un posto per questo bus? (1=SI, 0=NO)");
+		scanf("%d",&risposta);
+
+		if(risposta==1){
+			puts("Grazie per aver prenotato con noi, si rechi alla fermata più vicino a lei");
+		}
+	}
+	else {
+		puts("La ringraziamo per aver utilizzato quest'app, alla prossima!!");
+	}
+
+}
+
+void Perc_Bari(void){
+	puts("\n ***** Questo è il percorso del Bus ***** \n");
+
+	puts("\t Prima   Fermata  -  Ateneo ");
+	puts("\t Seconda Fermata  -  Via Andrea Da Bari");
+	puts("\t Terza   Fermata  -  Via Niccolò Piccinni");
+	puts("\t Quarta  Fermata  -  Via Francesco Crispi");
+	puts("\t Quinta  Fermata  -  Corso Mazzini");
+
+	Pren_Bari();
+}
+
+void Pren_Bari(void){
+	int opzione,risposta;
+
+	printf("Il Bus percorre una via che ti porta a destinazione? (Inserire 1=SI, 0=NO)");
+	scanf("%d",&opzione);
+
+	if(opzione==1){
+
+		printf("Vorresti prenotare un posto per questo bus? (1=SI, 0=NO)");
+		scanf("%d",&risposta);
+
+		if(risposta==1){
+			puts("Grazie per aver prenotato con noi, si rechi alla fermata più vicino a lei");
+		}
+	}
+	else {
+		puts("La ringraziamo per aver utilizzato quest'app, alla prossima!!");
+	}
+
+}
